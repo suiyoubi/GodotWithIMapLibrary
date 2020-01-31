@@ -1,3 +1,50 @@
+## Godot with InfluenceMap Library Integration
+
+This repo contains the source code of godot engine and the influencemap library.
+All the IMap-related codes are located in `modules/imap`, and all the other files
+are kept update with the master branch of Godot.
+
+## Usage
+To use the InfluenceMap library, either clone this repo, which grants you the ability
+to compile the source code into executable. What you can also do is to only download the
+`modules/imap` folder, clone the source code of godot from the official website, and place
+the folder into the same place. 
+
+1. Clone the repo:
+`git clone https://github.com/suiyoubi/GodotWithIMapLibrary.git`
+2. Install Scons:
+	- This is the build tool that godot is using for building the engine. You can read
+	more about this from their official documentation [here](https://docs.godotengine.org/en/3.2/development/compiling/introduction_to_the_buildsystem.html)
+	- if you are using mac, I recommend you using [brew](https://brew.sh/) to install it:
+	`brew install scons`
+3. Build the engine:
+	- Make sure you are in the root folder of the repo
+	- For mac user: `user@host:~/godot$ scons platform=osx --jobs=$(sysctl -n hw.logicalcpu)`
+	- Please refer to their documentation for other specific platform usage (since I have not
+	tested) [here](https://docs.godotengine.org/en/3.2/development/compiling/index.html)
+4. Run the engine:
+	- For mac user, you can simply execute the executable in the `bin` folder, the executable
+	should be named similar to `godot.osx.tools.64`: `user@host:~/godot$ bin/godot.osx.tools.64`
+5. Use the library:
+	- In the Godot script, you can simply instantiate a influence instance by
+	```
+		var imap = IMap.new()
+	```
+	- It is important to call `imap.initialize_default_map()` after creating the new instance,
+	the default map has size 40x30. If you want to customize the size, use `imap.create_imap()`
+	- For now, there are three basic operation provided for godot: add/move/get influence source:
+		- `void add_influence_source(int id, float x, float y, float influence_value);`
+		- `void move_influence_source(int id, float x, float y);`
+		- `float float get_influence_value_at(float x, float y);`
+	- You should be able to call this three method directly from the GDScript
+	- There will be more operations supported, you can read the implementation of the "wrapper" class
+	[IMap.cpp](modules/imap/IMap.cpp)
+
+
+
+
+
+
 [![Godot Engine logo](/logo.png)](https://godotengine.org)
 
 ## Godot Engine
