@@ -7,10 +7,10 @@
 
 #include <vector>
 
-#include "imlayer.h"
+#include "imlayer_draw.h"
 
-class IMLayerPointSource : public IMLayer {
-	GDCLASS(IMLayerPointSource, IMLayer);
+class IMLayerPointSource : public IMLayerDraw {
+	GDCLASS(IMLayerPointSource, IMLayerDraw);
 
 public:
 	IMLayerPointSource();
@@ -18,13 +18,8 @@ public:
 	void init(int start_x, int start_y, int width, int height);
 	void set_dimens(int width, int height);
 
-	float get_value_at(int x, int y);
-
 protected:
 	static void _bind_methods();
-
-private:
-	std::vector<std::vector<float> > values;
 };
 
 #endif //IMAP_IMAP_POINT
