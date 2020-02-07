@@ -19,7 +19,7 @@ public:
 
     void init(int start_x, int start_y, int width, int height);
     void set_dimens(int width, int height);
-
+    double get_value_at(int x, int y) ;
 };
 
 

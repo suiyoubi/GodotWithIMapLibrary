@@ -48,3 +48,7 @@ void IMLayerPointSource::set_dimens(int width, int height) {
                     get_value_at(i+this->start_x, j+this->start_y) / sum
                     );
 }
+
+double IMLayerPointSource::get_value_at(int x, int y) {
+    return IMLayerDraw::get_value_at(x, y);
+}
